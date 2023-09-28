@@ -7,13 +7,75 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-datacademy-package = {path = "../datacademy-package", develop = true}
+datacademy-package = { path = "../datacademy-package", develop = true }
 ipykernel = "^6.25.2"
 numpy = "^1.26.0"
 pandas = "^2.1.1"
 matplotlib = "^3.8.0"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+httpx = "^0.25.0"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+select = [
+    "F",   # Pyflakes basic
+    "E",   # Pycodestyle error
+    "W",   # Pycodestyle warning
+    "C90", # McCabe code complexity
+    "I",   # Sorting
+    "N",   # Naming conventions
+    "D",   # Docstyle
+    "UP",  # Code upgrades
+    "ANN", # Type annotation
+    "S",   # Flake8 bandit
+    "BLE", # Flake8 Blind except statement
+    "B",   # Flake8 Bugbear
+    "A",   # Flake8 Builtins
+    "C4",  # Flake8 Comprehensions
+    "DTZ", # Flake8 Timezones
+    "ISC", # Flake8 Implicit string concat
+    "ICN", # Flake8 Import conventions
+    "PIE", # Flake8 PIE
+    "T20", # Flake8 Print
+    "Q",   # Flake8 Quotes
+    "RSE", # Flake8 Raise
+    "RET", # Flake8 Return
+    "SLF", # Flake8 Self
+    "SIM", # Flake8 Simplify
+    "TID", # Flake8 Tidy imports
+    "ARG", # Flake8 Unused arguments
+    "PTH", # Flake8 Use pathlib
+    "FIX", # Flake8 Fixme
+    "ERA", # Eridacate (remove old code)
+    "PL",  # Pylint
+    "RUF", # Ruff specific rules
+]
+
+ignore = [
+    "ANN101", # Missing type self
+    "ANN102", # Missing type cls
+    "FIX002", # TODO
+]
+
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.per-file-ignores]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.pylint]
+max-args = 8

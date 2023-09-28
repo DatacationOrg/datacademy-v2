@@ -1,0 +1,62 @@
+[
+    {
+        "first_name": "John",
+        "last_name": "Doe",
+        "address": "1948 Conifer Drive"
+    },
+    {
+        "first_name": "Arthur",
+        "last_name": "Holmes",
+        "address": "2149 Stockert Hollow Road"
+    },
+    {
+        "first_name": "Jamie",
+        "last_name": "Dean",
+        "address": "4883 White Lane"
+    },
+    {
+        "first_name": "Axton",
+        "last_name": "Rogers",
+        "address": "2800 Brannon Avenue"
+    },
+    {
+        "first_name": "Ellis",
+        "last_name": "West",
+        "address": "4298 Peck Court"
+    },
+    {
+        "first_name": "Vicente",
+        "last_name": "Bryant",
+        "address": "3119 Maple Lane"
+    },
+    {
+        "first_name": "Deshawn",
+        "last_name": "Booker",
+        "address": "183 Jadewood Farms"
+    },
+    {
+        "first_name": "Reed",
+        "last_name": "Nixon",
+        "address": "4861 Hanover Street"
+    },
+    {
+        "first_name": "Asthon",
+        "last_name": "Cole",
+        "address": "816 Jacobs Street"
+    },
+    {
+        "first_name": "Shay",
+        "last_name": "Hyde",
+        "address": "2612 Barnes Street"
+    },
+    {
+        "first_name": "Raylee",
+        "last_name": "Diaz",
+        "address": "4880 Nutters Barn Lane"
+    },
+    {
+        "first_name": "Cameron",
+        "last_name": "Taylor",
+        "address": "548 Newton Street"
+    }
+]
