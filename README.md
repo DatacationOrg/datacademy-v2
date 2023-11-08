@@ -29,8 +29,6 @@ python -m poetry config virtualenvs.create true
 python -m poetry config virtualenvs.in-project true
 ```
 
-You should now have a folder called `.venv`. It might not show in your editor, but you can see it in file explorer.
-
 ### Step 2. Install dependencies
 Execute the following commands to install all necessary packages. We call this the dependencies. 
 
@@ -39,7 +37,7 @@ Execute the following commands to install all necessary packages. We call this t
 python -m poetry install
 ```
 
-These dependencies are specified in `pyproject.toml`, but you don't need to worry about that!
+You should now have a folder called `.venv`. It might not show in your editor, but you can see it in file explorer. These dependencies are specified in `pyproject.toml`, but you don't need to worry about that!
 
 ### Step 3. Select the environment as interpreter
 In VS Code, use `ctrl+shift+p` and then use `Python: Select Interpreter` to select the virtual environment in `.venv` as the python interpreter. The correct interpreter should look something like:
