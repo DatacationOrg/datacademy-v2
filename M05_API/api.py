@@ -14,8 +14,10 @@ app = FastAPI()
 """
 API GET requests
 """
+
+
 # Example GET request
-@app.get('/get-customer/{customer_id}')
+@app.get("/get-customer/{customer_id}")
 def get_customer(customer_id: int) -> dict[str, str]:
     """Get a customer by its ID.
 
@@ -26,12 +28,12 @@ def get_customer(customer_id: int) -> dict[str, str]:
         dict[str, str]: Customer details.
     """
     if customer_id not in customers:
-        return {'Error': 'Customer does not exists yet.'}
+        return {"Error": "Customer does not exists yet."}
     return customers[customer_id]
 
 
-#TODO: Create GET request with end point: "/get-customer-by-name/{last_name}"
-@app.get('/get-customer-by-name/{last_name}')
+# TODO: Create GET request with end point: "/get-customer-by-name/{last_name}"
+@app.get("/get-customer-by-name/{last_name}")
 def get_customer_by_name(last_name: str) -> dict[str, str]:
     """Get a customer by name.
 
@@ -42,15 +44,14 @@ def get_customer_by_name(last_name: str) -> dict[str, str]:
         dict[str, str]: Customer details.
     """
     for customer_id in customers:
-        if customers[customer_id]['last_name'] == last_name:
+        if customers[customer_id]["last_name"] == last_name:
             return customers[customer_id]
 
-    return {'Error': f"Customer with last name: '{last_name}' does not exists"}
+    return {"Error": f"Customer with last name: '{last_name}' does not exists"}
 
 
-
-#TODO: Create GET request with end point: "/get-customers/"
-@app.get('/get-customers/')
+# TODO: Create GET request with end point: "/get-customers/"
+@app.get("/get-customers/")
 def get_customers(skip: int = 0, limit: int = 3) -> dict[int, dict[str, str]]:
     """Get all customers.
 
@@ -61,15 +62,16 @@ def get_customers(skip: int = 0, limit: int = 3) -> dict[int, dict[str, str]]:
     Returns:
         dict[int, dict[str, str]]: Dictionary of customer id to customer details.
     """
-    return {i: customers[i] for i in range(skip, min(skip+limit, len(customers)))}
-
+    return {i: customers[i] for i in range(skip, min(skip + limit, len(customers)))}
 
 
 """
 API POST requests
 """
+
+
 # Example POST request
-@app.post('/create-customer/{customer_id}')
+@app.post("/create-customer/{customer_id}")
 def create_customer(customer_id: int, first_name: str, last_name: str, address: str) -> dict[str, str]:
     """Create a new customer.
 
@@ -83,21 +85,17 @@ def create_customer(customer_id: int, first_name: str, last_name: str, address: 
         dict[str, str]: Customer details.
     """
     if customer_id in customers:
-        return {'Error': f'customerId already used, next id available is: {max(customers.keys())+1}.'}
+        return {"Error": f"customerId already used, next id available is: {max(customers.keys())+1}."}
 
     if (customer_id - max(customers.keys())) > 1:
-        return {'Error': f'customerId do not fit neatly together, next id available is: {max(customers.keys())+1}.'}
+        return {"Error": f"customerId do not fit neatly together, next id available is: {max(customers.keys())+1}."}
 
-    customers[customer_id] = {
-        'first_name': first_name,
-        'last_name': last_name,
-        'address': address
-    }
+    customers[customer_id] = {"first_name": first_name, "last_name": last_name, "address": address}
     return customers[customer_id]
 
 
-#TODO: Create POST request with end point: "/create-customer-auto-increment/"
-@app.post('/create-customer-auto-increment/')
+# TODO: Create POST request with end point: "/create-customer-auto-increment/"
+@app.post("/create-customer-auto-increment/")
 def create_customer_auto_increment(first_name: str, last_name: str, address: str) -> dict[str, str]:
     """Create a new customer using auto-increment.
 
@@ -111,19 +109,16 @@ def create_customer_auto_increment(first_name: str, last_name: str, address: str
     """
     customer_id = max(customers.keys()) + 1
 
-    customers[customer_id] = {
-        'first_name': first_name,
-        'last_name': last_name,
-        'address': address
-    }
+    customers[customer_id] = {"first_name": first_name, "last_name": last_name, "address": address}
     return customers[customer_id]
-
 
 
 """
 API PUT requests
 """
-@app.put('/update-customer-address/{customer_id}')
+
+
+@app.put("/update-customer-address/{customer_id}")
 def update_customer_address(customer_id: int, address: str) -> dict[str, str]:
     """Update the address of a customer.
 
@@ -135,14 +130,14 @@ def update_customer_address(customer_id: int, address: str) -> dict[str, str]:
         dict[str, str]: Updated customer.
     """
     if customer_id not in customers:
-        return {'Error': 'Customer does not exists.'}
+        return {"Error": "Customer does not exists."}
 
-    customers[customer_id]['address'] = address
+    customers[customer_id]["address"] = address
     return customers[customer_id]
 
 
-#TODO: Create PUT request with end point: "/update-customer-address-by-name/"
-@app.put('/update-customer-address-by-name/')
+# TODO: Create PUT request with end point: "/update-customer-address-by-name/"
+@app.put("/update-customer-address-by-name/")
 def update_customer_address_by_name(first_name: str, last_name: str, address: str) -> dict[str, str]:
     """Update a customer's address by name.
 
@@ -155,17 +150,20 @@ def update_customer_address_by_name(first_name: str, last_name: str, address: st
         dict[str, str]: Customer details.
     """
     for customer_id in customers:
-        if customers[customer_id]['first_name'] == first_name and customers[customer_id]['last_name'] == last_name:
-            customers[customer_id]['address'] = address
+        if customers[customer_id]["first_name"] == first_name and customers[customer_id]["last_name"] == last_name:
+            customers[customer_id]["address"] = address
 
             return customers[customer_id]
 
-    return {'Error': f'No customer named {first_name} {last_name} exists.'}
+    return {"Error": f"No customer named {first_name} {last_name} exists."}
+
 
 """
 API DELETE requests
 """
-@app.delete('/delete-customer/{customer_id}')
+
+
+@app.delete("/delete-customer/{customer_id}")
 def delete_customer(customer_id: int) -> dict[str, str]:
     """Delete a customer.
 
@@ -176,14 +174,14 @@ def delete_customer(customer_id: int) -> dict[str, str]:
         dict[str, str]: Error or success message.
     """
     if customer_id not in customers:
-        return {'Error': 'Customer does not exists.'}
+        return {"Error": "Customer does not exists."}
 
     del customers[customer_id]
-    return {'Message': f'Customer {customer_id} deleted successfully.'}
+    return {"Message": f"Customer {customer_id} deleted successfully."}
 
 
-#TODO: Create DELETE request with end point: "/delete-customer-by-name/"
-@app.delete('/delete-customer-by-name/')
+# TODO: Create DELETE request with end point: "/delete-customer-by-name/"
+@app.delete("/delete-customer-by-name/")
 def delete_customer_by_name(first_name: str, last_name: str) -> dict[str, str]:
     """Delete a customer by name.
 
@@ -195,10 +193,8 @@ def delete_customer_by_name(first_name: str, last_name: str) -> dict[str, str]:
         dict[str, str]: Customer details.
     """
     for customer in customers:
-        if customers[customer]['first_name'] == first_name and customers[customer]['last_name'] == last_name:
+        if customers[customer]["first_name"] == first_name and customers[customer]["last_name"] == last_name:
             del customers[customer]
-            return {'Message': f'Customer {first_name} {last_name} deleted successfully.'}
+            return {"Message": f"Customer {first_name} {last_name} deleted successfully."}
 
-    return {'Error': 'The customer you are trying to delete does not exist.'}
-
-
+    return {"Error": "The customer you are trying to delete does not exist."}
