@@ -14,7 +14,8 @@ matplotlib = "^3.8.0"
 fastapi = "^0.103.1"
 uvicorn = "^0.23.2"
 httpx = "^0.25.0"
-datacademy-package = {git = "https://github.com/DatacationOrg/datacademy-package.git", tag = "v0.1.0"}
+#datacademy-package = {git = "https://github.com/DatacationOrg/datacademy-package.git", tag = "v0.1.0"}
+datacademy-package = {git = "https://github.com/DatacationOrg/datacademy-package.git", branch="feature/module10"}
 
 
 [build-system]
