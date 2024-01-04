@@ -5,7 +5,8 @@ import os
 class uploadData:
     def __init__(self, dic_dfs:dict, db_name:str='database.db'):
         self.db_name = db_name
-        self.db_file_path = f"{os.getcwd().lower().split('modules')[0]}/Modules/M10_FINAL/src/{self.db_name}"
+        # self.db_file_path = f"{os.getcwd().lower().split('modules')[0]}/Modules/M10_FINAL/src/{self.db_name}"
+        self.db_file_path = f"./{self.db_name}"
         
         self.tables = ['auctions', 'lots', 'bids']
         self.dfs = dic_dfs
@@ -21,7 +22,7 @@ class uploadData:
     def push_data(self):
         for table in self.dfs:
             df = self.dfs[table]
-            df.columns = self.get_column_names_from_db_table(table_name=table)
+            #df.columns = self.get_column_names_from_db_table(table_name=table)
 
             # The replace parameter drops the table before inserting new values.
             df.to_sql(name=table, con=self.conn, 
