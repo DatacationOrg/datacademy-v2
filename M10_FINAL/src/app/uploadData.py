@@ -5,7 +5,6 @@ import os
 class uploadData:
     def __init__(self, dic_dfs:dict, db_name:str='database.db'):
         self.db_name = db_name
-        # self.db_file_path = f"{os.getcwd().lower().split('modules')[0]}/Modules/M10_FINAL/src/{self.db_name}"
         self.db_file_path = f"./{self.db_name}"
         
         self.tables = ['auctions', 'lots', 'bids']
