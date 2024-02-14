@@ -109,7 +109,7 @@ def create_lot(db:orm.Session, lot:schemas.LotCreate):
         lotnumber=1
 
     auctionDuration = get_auction_duration(db=db, auctionID=lot.auctionID)
-    print(auctionDuration)
+
     startingBid = get_starting_bid(
         numberOfItems=lot.numberOfItems,
         estimatedValue=lot.estimatedValue,
