@@ -398,8 +398,8 @@ sqlalchemy = "^2.0.21"
 [package.source]
 type = "git"
 url = "https://github.com/DatacationOrg/datacademy-package.git"
-reference = "main"
-resolved_reference = "01bec9564cdec80d2a5a9185d3bc81d2d0ae5977"
+reference = "v0.2.2"
+resolved_reference = "2d88c9ffc046920a94d0e8c005a7f3945669c58b"
 
 [[package]]
 name = "debugpy"
@@ -2291,4 +2291,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "aea5693ba72953e4f90802e2eb7aeb29a78471144990f77e74d1fd6b335ff891"
+content-hash = "d54ba9abfd83a81c643d2f1ea4ad1e21d9c106bdef1e7dbde3d6d4c72a6f7dfd"
